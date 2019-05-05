@@ -27,12 +27,12 @@ namespace NUnitTestProject_Udemy
     public class EquationTests
     {
         [Test]
-        public void Test1()
+        public void QuadraticTest()
         {
             var result = Solve.Quadratic(1, 10, 16);
         }
         [Test]
-        public void Test2()
+        public void QuadraticTestUnCoveredTest()
         {
             Assert.Throws<Exception>(() => Solve.Quadratic(1, 10, 16));
         }
