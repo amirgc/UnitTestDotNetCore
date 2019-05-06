@@ -34,7 +34,7 @@ namespace NUnitTestProject_Udemy
         [Test]
         public void QuadraticTestUnCoveredTest()
         {
-            Assert.Throws<Exception>(() => Solve.Quadratic(1, 10, 16));
+            Assert.Throws<Exception>(() => Solve.Quadratic(1, 10, 100));
         }
     }
 }

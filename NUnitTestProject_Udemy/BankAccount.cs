@@ -7,16 +7,18 @@ namespace NUnitTestProject_Udemy
     class BankAccount
     {
         public int balance;
-
-        public BankAccount(int v)
+        private readonly ILog log;
+        public BankAccount(int amount, ILog log)
         {
-            this.balance = v;
+            this.balance = amount;
+            this.log = log;
         }
 
         internal bool Withdraw(int amountToWithdraw)
         {
             if (balance >= amountToWithdraw)
             {
+                log.Write($"Successfully withdraw of amount {amountToWithdraw}");
                 balance -= amountToWithdraw;
                 return true;
             }

@@ -1,4 +1,5 @@
 using JetBrains.dotMemoryUnit;
+using JetBrains.dotMemoryUnit.Kernel;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace Tests
                  {
                      Assert.That(memory.GetTrafficFrom(checkPoint1)
                          .Where(typeMemoryInfo => typeMemoryInfo.Interface.Is<IEnumerable<int>>())
-                         .AllocatedMemory.SizeInBytes, Is.LessThan(1000));
+                         .AllocatedMemory.SizeInBytes, Is.LessThan(-1));
                  });
         }
 

@@ -5,9 +5,12 @@ using System.Text;
 
 namespace NUnitTestProject_Udemy
 {
-    class TestingMethodologies
+    class NullLog : ILog
     {
-
+        public void Write(string message)
+        {
+           
+        }
     }
     [TestFixture]
     public class DataDrivenTest
@@ -16,11 +19,12 @@ namespace NUnitTestProject_Udemy
         [SetUp]
         public void Setup()
         {
-            ba = new BankAccount(100);
+            NullLog nullLog = new NullLog();
+            ba = new BankAccount(100, nullLog);
         }
 
         [Test]
-        [TestCase(50,true,50)]
+        [TestCase(50, true, 50)]
         [TestCase(100, true, 0)]
         [TestCase(1005, false, 100)]
         public void TestMultipleWithdrawalScenarios(int amountToWithdraw, bool shouldsucceed, int expectedBalance)
@@ -40,6 +44,8 @@ namespace NUnitTestProject_Udemy
             var ex = Assert.Throws<ArgumentException>(() => ba.Deposit(-1));
             StringAssert.StartsWith("Deposit amount must be positive", ex.Message);
         }
+
+
     }
 
 
